@@ -75,9 +75,9 @@ Display: {gl.gl_info.get_renderer()}
 
 		logging.info("Compiling Shaders")
 		if not self.options.COLORED_LIGHTING:
-			self.shader = shader.Shader("shaders/alpha_lighting/vert.glsl", "shaders/alpha_lighting/frag.glsl")
+			self.shader = shader.Shader("community/shaders/alpha_lighting/vert.glsl", "community/shaders/alpha_lighting/frag.glsl")
 		else:
-			self.shader = shader.Shader("shaders/colored_lighting/vert.glsl", "shaders/colored_lighting/frag.glsl")
+			self.shader = shader.Shader("community/shaders/colored_lighting/vert.glsl", "community/shaders/colored_lighting/frag.glsl")
 		self.shader_sampler_location = self.shader.find_uniform(b"u_TextureArraySampler")
 		self.shader.use()
 

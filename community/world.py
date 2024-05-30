@@ -41,6 +41,7 @@ class World:
 		self.player = player
 		self.texture_manager = texture_manager
 		self.block_types = [None]
+		self.ibo = gl.GLuint(0)
 
 		self.shader_daylight_location = shader.find_uniform(b"u_Daylight")
 		self.daylight = 1800
@@ -54,7 +55,7 @@ class World:
 
 		# parse block type data file
 
-		blocks_data_file = open("data/blocks.mcpy")
+		blocks_data_file = open("community/data/blocks.mcpy")
 		blocks_data = blocks_data_file.readlines()
 		blocks_data_file.close()
 
@@ -120,7 +121,6 @@ class World:
 			indices.append(4 * nquad + 0)
 
 
-		self.ibo = gl.GLuint(0)
 		gl.glGenBuffers(1, self.ibo)
 		gl.glBindBuffer(gl.GL_ELEMENT_ARRAY_BUFFER, self.ibo)
 		gl.glBufferData(
